@@ -1,4 +1,19 @@
-.red{
-  font-size: 2rem;
-  color: red;
+.wrapper {
+  height: 600px;
+  background-color: var(--primary-color);
 }
+
+//column
+.content{
+  display: flex;
+  align-items: center;
+}
+.card-column-header{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
