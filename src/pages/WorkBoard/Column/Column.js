@@ -3,7 +3,7 @@ import classNames from "classnames/bind";
 import {Container, Draggable} from "react-smooth-dnd";
 
 import styles from "./Column.module.css";
-import Card from "~/pages/Home/Card";
+import Card from "~/pages/WorkBoard/Card";
 
 const cx = classNames.bind(styles);
 
