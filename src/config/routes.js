@@ -1,8 +1,8 @@
 const routes = {
     home: "/home",
-    login: "/login",
-    register: "/register",
+    account: "/account"
     workBoard:'/word-board'
+
 
 };
 export default routes;
