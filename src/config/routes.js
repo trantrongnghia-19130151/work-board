@@ -1,7 +1,7 @@
 const routes = {
     home: "/home",
-    account: "/account"
-    workBoard:'/word-board'
+    account: "/account",
+    workBoard:'/word-board',
 
 
 };
