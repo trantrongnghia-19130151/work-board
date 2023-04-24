@@ -27,10 +27,10 @@ function Home(props) {
         <div className={cx('wrapper')}>
             <Container>
                 <Row>
-                    <Col xs lg="2">
+                    <Col xs lg="3">
                         <Sidebar/>
                     </Col>
-                    <Col xs lg="10">
+                    <Col xs lg="9">
                         <Content/>
                     </Col>
                 </Row>
