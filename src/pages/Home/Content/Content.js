@@ -1,11 +1,23 @@
 import React from 'react';
 import classNames from "classnames/bind";
 import styles from "./Content.module.scss";
+import { FaPlus } from 'react-icons/fa';
 const cx = classNames.bind(styles);
 function Content(props) {
     return (
         <div className={cx('wrapper')}>
-            <h3>Content</h3>
+            <h3 className={cx(styles.heading)}>Content</h3>
+            <img src="src/pages/Home/Content/trello.jpg" alt=""/>
+            <p>
+                <span className={cx(styles.styledText)}>Theo dõi và cập nhật</span>
+                <br/>
+                <span className={cx(styles.defaultText)}>Mời mọi người vào bảng và thẻ, để lại nhận xét,
+                    <br />thêm ngày hết hạn và chúng tôi sẽ hiển thị hoạt động quan trọng nhất ở đây.</span>
+            </p>
+            <div className={cx(styles.buttonContainer)}>
+                <p>Liên kết</p>
+                <button className={cx(styles.button)}><FaPlus /> Tạo bảng</button>
+            </div>
         </div>
     );
 }

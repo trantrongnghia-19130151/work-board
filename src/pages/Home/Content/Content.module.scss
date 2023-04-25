@@ -1,0 +1,21 @@
+
+.wrapper {
+  border-radius: 10px;
+  /* other wrapper styles */
+}
+.styles.styledText{
+  font-size: 28px;
+  font-weight: bold;
+}
+.styles.defaultText{
+  font-size: 20px;
+}
+.button {
+  background-color: blue;
+  color: white;
+  border-radius: 10px;
+}
+
+.button:hover {
+  background-color: green;
+}
