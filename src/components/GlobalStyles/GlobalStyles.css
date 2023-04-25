@@ -42,6 +42,12 @@ input,button{
 body a.dropdown-item {
     font-size: 1.6rem;
 }
+.logo{
+    filter: brightness(0) saturate(100%) invert(30%) sepia(53%) saturate(323%) hue-rotate(179deg) brightness(91%) contrast(88%);
+}
+.nav-item{
+    margin-right: 12px;
+}
 .app{
     display: flex;
     position: fixed;
