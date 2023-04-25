@@ -6,8 +6,8 @@ const cx = classNames.bind(styles);
 function Content(props) {
     return (
         <div className={cx('wrapper')}>
-            <h3 className={cx(styles.heading)}>Content</h3>
-            <img src="src/pages/Home/Content/trello.jpg" alt=""/>
+            <h3 className={cx(styles.heading)}></h3>
+            <img src="trello.jpg" alt=""/>
             <p>
                 <span className={cx(styles.styledText)}>Theo dõi và cập nhật</span>
                 <br/>
