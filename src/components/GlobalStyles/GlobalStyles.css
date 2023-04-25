@@ -38,6 +38,10 @@ input,button{
 /*css lib react-smooth-dnd*/
 
 /*1*/
+/* customer react-bootraps */
+body a.dropdown-item {
+    font-size: 1.6rem;
+}
 .app{
     display: flex;
     position: fixed;
