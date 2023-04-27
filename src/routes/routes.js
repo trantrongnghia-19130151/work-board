@@ -1,7 +1,8 @@
 import config from "~/config";
+import Account from "~/pages/Account";
+import WorkBoard from "src/pages/WorkBoard";
 import Home from "~/pages/Home";
-import Login from "~/pages/Login";
-import Register from "~/pages/Register";
+
 
 
 
@@ -12,8 +13,11 @@ import Register from "~/pages/Register";
 const publicRoutes = [
     {path: '/', component: Home},
     {path: config.routes.home, component: Home},
-    {path: config.routes.login, component: Login, layout: null},
-    {path: config.routes.register, component: Register, layout: null},
+
+    {path: config.routes.account, component: Account, layout: null},
+    {path: config.routes.workBoard, component: WorkBoard},
+    
+
 
 
 
