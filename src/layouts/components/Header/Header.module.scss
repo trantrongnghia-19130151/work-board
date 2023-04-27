@@ -4,14 +4,27 @@
 }
 .nav-item {
   font-size: 14px;
+  display: flex;
+  align-items: center;
  
 }
 .dropdown-menu.show {
   padding: 5px 10px !important;
 
 }
-@mixin caret-start {
-  border-top: $caret-width solid transparent;
-  border-right: $caret-width solid;
-  border-bottom: $caret-width solid transparent;
+.create-workspace-link{
+  font-size: 1.6rem;
+  color: var(--text-color);
+  &:hover{
+    color: var(--text-color);
+  }
+}
+.space-item{
+  width: 100%;
+  padding: 6px;
+  img{
+    width: 100%;
+    max-height: 150px;
+    object-fit: cover;
+  }
 }
