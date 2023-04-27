@@ -11,12 +11,13 @@ import {
   Tooltip,
 } from "react-bootstrap";
 import classNames from "classnames/bind";
+import { Link } from "react-router-dom";
 
 import styles from "./Header.module.scss";
 import hinh7mau from "~/assets/header/hinh7mau.jpg";
 import { VscBell, VscColorMode, VscQuestion } from "react-icons/vsc";
-import { Link } from "react-router-dom";
 import { IoMdPeople } from "react-icons/io";
+import config from "~/config";
 
 const cx = classNames.bind(styles);
 
@@ -32,13 +33,15 @@ function NavScrollExample() {
           }}
           href="/"
         >
-          <img
-            src="https://a.trellocdn.com/prgb/assets/d947df93bc055849898e.gif"
-            width="140"
-            height="30"
-            className="d-inline-block align-top"
-            alt="React Bootstrap logo"
-          />
+          <Link to={config.routes.home}>
+              <img
+                  src="https://a.trellocdn.com/prgb/assets/d947df93bc055849898e.gif"
+                  width="140"
+                  height="30"
+                  className="d-inline-block align-top"
+                  alt="React Bootstrap logo"
+              />
+          </Link>
         </Navbar.Brand>
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -133,7 +136,7 @@ function NavScrollExample() {
                 id="navbarScrollingDropdown"
               >
                 {" "}
-                <NavDropdown.Item href="#action3">
+                <NavDropdown.Item className={cx('space-item')} href="#action3">
                   <Image
                     src={hinh7mau}
                     rounded
@@ -228,12 +231,8 @@ function NavScrollExample() {
                   }}
                   as="div"
                 >
-                  <span
-                    style={{
-                      fontSize: "14px",
-                      width: "100%",
-                    }}
-                  >
+                  <Link className={cx('create-workspace-link')} to={config.routes.createWorkspace}>
+
                     <IoMdPeople /> Tạo Không gian làm việc
                     <p
                       style={{
@@ -242,7 +241,7 @@ function NavScrollExample() {
                     >
                       Là tập hợp các bảng và mọi người.
                     </p>
-                  </span>
+                  </Link>
                 </Dropdown.Item>
               </DropdownButton>
             </div>
@@ -262,10 +261,10 @@ function NavScrollExample() {
             <VscColorMode size={25} />
           </Form>
         </Navbar.Collapse>
-        <Link to="/account" className="m-3">
+        <Link to={config.routes.account} className="m-3">
           <Button size="lg" type="submit">
             Đăng Nhập
-          </Button>{" "}
+          </Button>
         </Link>
       </Container>
     </Navbar>
