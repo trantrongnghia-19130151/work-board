@@ -3,18 +3,13 @@ import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import {
-  Button,
-  Dropdown,
-  DropdownButton,
-  Image,
-  Tooltip,
-} from "react-bootstrap";
+import { Button, Dropdown, DropdownButton, Image } from "react-bootstrap";
 import classNames from "classnames/bind";
 import { Link } from "react-router-dom";
 
 import styles from "./Header.module.scss";
 import hinh7mau from "~/assets/header/hinh7mau.jpg";
+import logo from "~/assets/header/logo-lion.png";
 import { VscBell, VscColorMode, VscQuestion } from "react-icons/vsc";
 import { IoMdPeople } from "react-icons/io";
 import config from "~/config";
@@ -26,21 +21,16 @@ function NavScrollExample() {
     <Navbar className={cx("wrapper")} bg="light" expand="lg">
       <Container>
         <Navbar.Brand
-          style={{
-            backgroundColor: "#0079bf",
-            borderRadius: "3px",
-            padding: "4px",
-          }}
           href="/"
         >
           <Link to={config.routes.home}>
-              <img
-                  src="https://a.trellocdn.com/prgb/assets/d947df93bc055849898e.gif"
-                  width="140"
-                  height="30"
-                  className="d-inline-block align-top"
-                  alt="React Bootstrap logo"
-              />
+            <img
+              src={logo}
+              width="140"
+              height="50"
+              className="d-inline-block align-top"
+              alt="React Bootstrap logo"
+            />
           </Link>
         </Navbar.Brand>
         <Navbar.Collapse id="navbarScroll">
@@ -136,7 +126,7 @@ function NavScrollExample() {
                 id="navbarScrollingDropdown"
               >
                 {" "}
-                <NavDropdown.Item className={cx('space-item')} href="#action3">
+                <NavDropdown.Item className={cx("space-item")} href="#action3">
                   <Image
                     src={hinh7mau}
                     rounded
@@ -218,7 +208,7 @@ function NavScrollExample() {
             <div className={cx("nav-item")}>
               <DropdownButton
                 className={cx("nav-item")}
-                align="center"
+                align={{ right: "end" }}
                 title="Tạo mới"
                 id="dropdown-menu-align-end"
                 size="lg"
@@ -231,8 +221,10 @@ function NavScrollExample() {
                   }}
                   as="div"
                 >
-                  <Link className={cx('create-workspace-link')} to={config.routes.createWorkspace}>
-
+                  <Link
+                    className={cx("create-workspace-link")}
+                    to={config.routes.createWorkspace}
+                  >
                     <IoMdPeople /> Tạo Không gian làm việc
                     <p
                       style={{
