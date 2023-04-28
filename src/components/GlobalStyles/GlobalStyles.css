@@ -4,10 +4,12 @@
   --text-color: rgba(128, 128, 137);
   --title-color: #333;
 
+
   /*height*/
   --height-header: 120px;
   --height-navbar-wrapper: 34px;
   --padding-top: 130px;
+  --padding: 30px;
 }
 
 * {
