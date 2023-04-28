@@ -40,6 +40,11 @@ button {
 }
 /*css lib react-smooth-dnd*/
 
+/*css react-bootstap*/
+body a#navbarScrollingDropdown {
+  font-size: 1.6rem;
+}
+
 /*1*/
 /* customer react-bootraps header */
 body a.dropdown-item {
