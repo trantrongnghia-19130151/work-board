@@ -1,7 +1,5 @@
 import React from 'react';
 import classNames from "classnames/bind";
-import { Container, Row, Col } from 'react-bootstrap';
-import { FaGem, FaHome, FaEnvelope, FaPhoneAlt, FaPrint } from 'react-icons/fa';
 
 
 import styles from './Footer.module.scss';
@@ -11,91 +9,40 @@ const cx = classNames.bind(styles);
 function Footer(props) {
     return (
         <div className={cx('wrapper')}>
-            <div className='text-center text-lg-start text-muted'>
-
-                <section className=''>
-                    <Container className='text-center text-md-start mt-5'>
-                        <Row className='mt-3'>
-                            <Col md='3' lg='4' xl='3' className='mx-auto mb-4'>
-                                <h6 className='text-uppercase fw-bold mb-4'>
-                                    <FaGem size={20}/>
-                                    Company name
-                                </h6>
-                                <p>
-                                    Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit
-                                    amet, consectetur adipisicing elit.
-                                </p>
-                            </Col>
-
-                            <Col md='2' lg='2' xl='2' className='mx-auto mb-4'>
-                                <h6 className='text-uppercase fw-bold mb-4'>Products</h6>
-                                <p>
-                                    <a href='#!' className='text-reset'>
-                                        Angular
-                                    </a>
-                                </p>
-                                <p>
-                                    <a href='#!' className='text-reset'>
-                                        React
-                                    </a>
-                                </p>
-                                <p>
-                                    <a href='#!' className='text-reset'>
-                                        Vue
-                                    </a>
-                                </p>
-                                <p>
-                                    <a href='#!' className='text-reset'>
-                                        Laravel
-                                    </a>
-                                </p>
-                            </Col>
-
-                            <Col md='3' lg='2' xl='2' className='mx-auto mb-4'>
-                                <h6 className='text-uppercase fw-bold mb-4'>Useful links</h6>
-                                <p>
-                                    <a href='#!' className='text-reset'>
-                                        Pricing
-                                    </a>
-                                </p>
-                                <p>
-                                    <a href='#!' className='text-reset'>
-                                        Settings
-                                    </a>
-                                </p>
-                                <p>
-                                    <a href='#!' className='text-reset'>
-                                        Oders
-                                    </a>
-                                </p>
-                                <p>
-                                    <a href='#!' className='text-reset'>
-                                        Help
-                                    </a>
-                                </p>
-                            </Col>
-
-                            <Col md='4' lg='3' xl='3' className='mx-auto mb-md-0 mb-4'>
-                                <h6 className='text-uppercase fw-bold mb-4'>Contact</h6>
-                                <p>
-                                    <FaHome size={20}/>
-                                    New York, NY 10012, US
-                                </p>
-                                <p>
-                                    <FaEnvelope size={20}/>
-                                    info@example.com
-                                </p>
-                                <p>
-                                    <FaPhoneAlt size={20}/> + 01 234 567 88
-                                </p>
-                                <p>
-                                    <FaPrint size={20}/> + 01 234 567 89
-                                </p>
-                            </Col>
-                        </Row>
-                    </Container>
-                </section>
-
+            <div className="mt-5 pt-5 pb-5 footer">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-5 col-xs-12 about-company">
+                            <h2>Heading</h2>
+                            <p className="pr-5 text-white-50">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                Nullam ac ante mollis quam tristique convallis </p>
+                            <p><a href="#"><i className="fa fa-facebook-square mr-1"></i></a><a href="#"><i
+                                className="fa fa-linkedin-square"></i></a></p>
+                        </div>
+                        <div className="col-lg-3 col-xs-12 links">
+                            <h4 className="mt-lg-0 mt-sm-3">Links</h4>
+                            <ul className="m-0 p-0">
+                                <li>- <a href="#">Lorem ipsum</a></li>
+                                <li>- <a href="#">Nam mauris velit</a></li>
+                                <li>- <a href="#">Etiam vitae mauris</a></li>
+                                <li>- <a href="#">Fusce scelerisque</a></li>
+                                <li>- <a href="#">Sed faucibus</a></li>
+                                <li>- <a href="#">Mauris efficitur nulla</a></li>
+                            </ul>
+                        </div>
+                        <div className="col-lg-4 col-xs-12 location">
+                            <h4 className="mt-lg-0 mt-sm-4">Location</h4>
+                            <p>22, Lorem ipsum dolor, consectetur adipiscing</p>
+                            <p className="mb-0"><i className="fa fa-phone mr-3"></i>(541) 754-3010</p>
+                            <p><i className="fa fa-envelope-o mr-3"></i>info@hsdf.com</p>
+                        </div>
+                    </div>
+                    <div className="row mt-5">
+                        <div className="col copyright">
+                            <p className=""><small className="text-white-50">© 2019. All Rights Reserved.</small></p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );
