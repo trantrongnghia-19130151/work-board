@@ -12,7 +12,7 @@ function Card(props) {
 
     return (
         <div className="card" {...card.props}>
-            <p>{card.data}</p>
+            <p>{card.name}</p>
         </div>
     );
 }
