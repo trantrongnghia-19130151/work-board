@@ -1,0 +1,33 @@
+.card-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  p {
+    margin-bottom: 0;
+  }
+
+  span {
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 999px;
+    &:hover {
+      background-color: #ccc;
+
+    }
+  }
+
+
+}
+
+
+.edit {
+  font-size: 2rem;
+}
+.avatar{
+  width: 25px;
+  height: 25px;
+}
+.edit-dropdown{
+  z-index: 1;
+}

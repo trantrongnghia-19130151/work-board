@@ -2,36 +2,57 @@ import React, {useEffect, useState} from 'react';
 import classNames from "classnames/bind";
 import {Container, Draggable} from "react-smooth-dnd";
 import Form from "react-bootstrap/Form";
+import {Button, DropdownButton} from "react-bootstrap";
+import DropdownItem from "react-bootstrap/DropdownItem";
 
 import styles from "./Column.module.scss";
 import Card from "~/pages/WorkBoard/Card";
-import {Button} from "react-bootstrap";
 import {RiDeleteBack2Fill} from "react-icons/ri";
 import {AiOutlinePlus} from "react-icons/ai";
 import {createCard} from "~/services/workspaces.sevices";
+import {saveTitleAfterEdit, selectAllInlineTest} from "~/untils/ContentEditable";
 
 const cx = classNames.bind(styles);
 
 function Column(props) {
-    const {data, getCardPayload, onCardDrop, setNewColumnId, setCard,setIsLoading} = props
+    const {data, getCardPayload, onCardDrop, setNewColumnId, setCard, setIsLoading} = props
     const [isOpen, setIsOpen] = useState(false)
     const [cardTitle, setCardTitle] = useState('')
-    const [error,setError] = useState('')
+    const [error, setError] = useState('')
+    const [columnTitle, setColumnTitle] = useState('')
+    useEffect(() => {
+        setColumnTitle(data.name)
+    }, [data.name])
+    const handleColumnTitleChange = (e) => {
+        setColumnTitle(e.target.value)
+    }
     const handleChangeCardTitle = (e) => {
         setCardTitle(e.target.value)
     }
     const handleChangeOpen = () => {
         setIsOpen(true)
     }
-    useEffect(()=>{
-        if(cardTitle.length > 0){
+    // Update column
+    const handleColumTitleBlur = () => {
+        if (columnTitle !== data.name) {
+            const newColumn = {
+                ...data,
+                title: columnTitle
+            }
+            //Call api updateColumn
+
+        }
+
+    }
+    useEffect(() => {
+        if (cardTitle.length > 0) {
             setError('')
         }
 
-    },[cardTitle])
+    }, [cardTitle])
 
     const handleCreateCard = async () => {
-        if(!cardTitle){
+        if (!cardTitle) {
             setError("card title không được để trống !!")
             return;
         }
@@ -41,14 +62,12 @@ function Column(props) {
             name: cardTitle
         }
         const response = await createCard(body)
-        if(response.status === 200){
+        if (response.status === 200) {
             setIsLoading(true)
             setIsOpen(false)
-        }
-        else{
+        } else {
             setIsLoading(false)
         }
-
 
 
     }
@@ -56,7 +75,31 @@ function Column(props) {
     return (
         <div className={cx('column')}>
             <header className='column-drag-handle'>
-                {data.name}
+                <div className={cx('header')}>
+                    <div className="column-title">
+                        {/*{data.title}*/}
+                        <Form.Control
+                            className={cx('editable')}
+                            size={"lg"}
+                            value={columnTitle}
+                            onChange={handleColumnTitleChange}
+                            onClick={selectAllInlineTest}
+                            onBlur={handleColumTitleBlur}
+                            onKeyDown={saveTitleAfterEdit}
+                            onMouseDown={event => event.preventDefault()}
+                            type='text'
+                            placeholder="Enter your title"
+                            spellCheck={false}
+                        />
+                    </div>
+                    <DropdownButton
+                        align="end"
+                        id="dropdown-menu-align-end"
+                        title="">
+                        <DropdownItem>Xóa cột</DropdownItem>
+                        <DropdownItem>Sửa title column</DropdownItem>
+                    </DropdownButton>
+                </div>
             </header>
             <Container
                 {...data.props}
