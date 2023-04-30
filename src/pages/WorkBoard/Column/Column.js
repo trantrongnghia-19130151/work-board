@@ -12,10 +12,13 @@ import {AiOutlinePlus} from "react-icons/ai";
 const cx = classNames.bind(styles);
 
 function Column(props) {
-    const {data, getCardPayload, onCardDrop} = props
+    const {data, getCardPayload, onCardDrop, setNewColumnId,setCard} = props
     const [isOpen, setIsOpen] = useState(false)
     const handleChangeOpen = () => {
         setIsOpen(true)
+    }
+    const handleGetId = (columnId, cardId) => {
+        setNewColumnId(columnId)
     }
 
     return (
@@ -27,18 +30,20 @@ function Column(props) {
                 {...data.props}
                 groupName="col"
                 onDragStart={e => console.log("drag started", e)}
-                onDragEnd={e => console.log("drag end", e)}
+                onDragEnd={e => setCard(e.payload)}
                 onDrop={e => onCardDrop(data.id, e)}
                 getChildPayload={index => getCardPayload(data.id, index)}
                 dragClass="card-ghost"
                 dropClass="card-ghost-drop"
                 onDragEnter={() => {
-                    console.log("drag enter:", data.id);
+                    setNewColumnId(data.id)
                 }}
                 onDragLeave={() => {
                     console.log("drag leave:", data.id);
                 }}
                 onDropReady={p => console.log('Drop ready: ', p)}
+
+
                 dropPlaceholder={{
                     animationDuration: 150,
                     showOnTop: true,
@@ -47,7 +52,7 @@ function Column(props) {
                 dropPlaceholderAnimationDuration={200}
             >
                 {data.cards.map(card => (
-                    <Draggable key={card.id}>
+                    <Draggable  key={card.id}>
                         <Card card={card}/>
                     </Draggable>
                 ))}
@@ -70,7 +75,7 @@ function Column(props) {
                                 />
                             </div>
                             <div className={cx('function')}>
-                                <Button  size="lg" variant="primary">Thêm</Button>
+                                <Button size="lg" variant="primary">Thêm</Button>
                                 <RiDeleteBack2Fill onClick={() => setIsOpen(false)} className={cx('icon-remove')}/>
                             </div>
                         </div>

@@ -12,3 +12,8 @@ export const getWorkspaceById = async (userId) => {
     return await instance.get(`/workspace/${userId}`);
 
 };
+export const moveCardToColumn = async (cardId,columnId) => {
+    return await instance.get(`/cards/${cardId}/moveTo/${columnId}`);
+
+};
+
