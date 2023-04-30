@@ -4,8 +4,9 @@ import {Dropdown, Image} from "react-bootstrap";
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 
-import {AiFillEdit} from 'react-icons/ai'
 import avatar from '~/assets/avatar/avatar.jpg'
+import {AiFillEdit} from 'react-icons/ai'
+
 
 
 import styles from "./Card.module.scss";
