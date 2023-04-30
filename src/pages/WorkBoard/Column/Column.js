@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import classNames from "classnames/bind";
 import {Container, Draggable} from "react-smooth-dnd";
 import Form from "react-bootstrap/Form";
@@ -8,17 +8,49 @@ import Card from "~/pages/WorkBoard/Card";
 import {Button} from "react-bootstrap";
 import {RiDeleteBack2Fill} from "react-icons/ri";
 import {AiOutlinePlus} from "react-icons/ai";
+import {createCard} from "~/services/workspaces.sevices";
 
 const cx = classNames.bind(styles);
 
 function Column(props) {
-    const {data, getCardPayload, onCardDrop, setNewColumnId,setCard} = props
+    const {data, getCardPayload, onCardDrop, setNewColumnId, setCard,setIsLoading} = props
     const [isOpen, setIsOpen] = useState(false)
+    const [cardTitle, setCardTitle] = useState('')
+    const [error,setError] = useState('')
+    const handleChangeCardTitle = (e) => {
+        setCardTitle(e.target.value)
+    }
     const handleChangeOpen = () => {
         setIsOpen(true)
     }
-    const handleGetId = (columnId, cardId) => {
-        setNewColumnId(columnId)
+    useEffect(()=>{
+        if(cardTitle.length > 0){
+            setError('')
+        }
+
+    },[cardTitle])
+
+    const handleCreateCard = async () => {
+        if(!cardTitle){
+            setError("card title không được để trống !!")
+            return;
+        }
+
+        const body = {
+            columnId: data.id,
+            name: cardTitle
+        }
+        const response = await createCard(body)
+        if(response.status === 200){
+            setIsLoading(true)
+            setIsOpen(false)
+        }
+        else{
+            setIsLoading(false)
+        }
+
+
+
     }
 
     return (
@@ -52,13 +84,13 @@ function Column(props) {
                 dropPlaceholderAnimationDuration={200}
             >
                 {data.cards.map(card => (
-                    <Draggable  key={card.id}>
+                    <Draggable key={card.id}>
                         <Card card={card}/>
                     </Draggable>
                 ))}
                 {
                     !isOpen && (
-                        <div onClick={handleChangeOpen} className={cx('create-column')}>
+                        <div onClick={handleChangeOpen} className={cx('create-card')}>
                             <AiOutlinePlus/>
                             <span>Thêm card</span>
                         </div>
@@ -66,17 +98,23 @@ function Column(props) {
                 }
                 {
                     isOpen && (
-                        <div className={cx('add-column')}>
+                        <div className={cx('add-card')}>
                             <div className={cx('input')}>
                                 <Form.Control
                                     size='lg'
+                                    value={cardTitle}
+                                    onChange={handleChangeCardTitle}
                                     className={cx('input-add')}
                                     placeholder="Nhập tiêu đề"
                                 />
+                                <Form.Text className={cx('error')}>
+                                    {error}
+                                </Form.Text>
                             </div>
                             <div className={cx('function')}>
-                                <Button size="lg" variant="primary">Thêm</Button>
-                                <RiDeleteBack2Fill onClick={() => setIsOpen(false)} className={cx('icon-remove')}/>
+                                <Button onClick={() => handleCreateCard()} size="lg" variant="primary">Thêm</Button>
+                                <RiDeleteBack2Fill onClick={() => setIsOpen(false)}
+                                                   className={cx('icon-remove')}/>
                             </div>
                         </div>
                     )
