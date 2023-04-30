@@ -18,6 +18,18 @@
     font-size: 1.6rem;
     padding: 0 12px;
 }
+.create-card{
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    cursor: pointer;
+
+    &:hover{
+        margin: 0 4px;
+        background-color: #92B9E3;
+        color: var(--while-color);
+    }
+}
 .function{
     padding: 12px;
 }
@@ -29,5 +41,9 @@
     &:hover{
         opacity: 0.7;
     }
+}
+.error{
+    padding: 4px;
+    color: #FF0033;
 }
 

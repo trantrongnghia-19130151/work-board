@@ -16,4 +16,8 @@ export const moveCardToColumn = async (cardId,columnId) => {
     return await instance.get(`/cards/${cardId}/moveTo/${columnId}`);
 
 };
+export const createCard = async (body) => {
+    return await instance.post(`/cards`,body);
+
+};
 

@@ -44,8 +44,9 @@ function WorkBoard(props) {
     }, [isLoading]);
 
     const handleAddColumns = async () => {
+        const  user = JSON.parse(localStorage.getItem("user"))
         const body = {
-            workspaceId: 1,
+            workspaceId: user.id,
             columnName: columnTitle
         }
         const response = await createColumn(body)
@@ -107,6 +108,7 @@ function WorkBoard(props) {
                         <Draggable key={column.id}>
                             <Column setNewColumnId={setNewColumnId}
                                     setCurrentColumnId={setCurrentColumnId}
+                                    setIsLoading={setIsLoading}
                                     setCard={setCard}
                                     data={column}
                                     onCardDrop={onCardDrop}
