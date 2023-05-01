@@ -20,4 +20,9 @@ export const createCard = async (body) => {
     return await instance.post(`/cards`,body);
 
 };
+export const getAllWorkspacesByUserId = async (userId) => {
+    return await instance.get(`/workspace/user?userId=${userId}`);
+
+};
+
 
