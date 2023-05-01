@@ -28,11 +28,11 @@ function Content(props) {
                     Your boards
                 </h3>
                 <Container>
-                    <Row>
+                    <Row >
                         {
                             workspaces?.map((workspace,index)=>{
                                 return (
-                                    <Col key={workspace.id} lg={3} md={3}>
+                                    <Col style={{marginBottom:"20px"}} key={workspace.id} lg={3} md={3}>
                                         <Link to={`/work-board/${workspace.id}`}>
                                             <div className={cx('board-item')}>
                                                 <img src={hinh7mau} alt=""/>
