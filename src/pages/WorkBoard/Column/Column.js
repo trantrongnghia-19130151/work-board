@@ -65,6 +65,7 @@ function Column(props) {
         if (response.status === 200) {
             setIsLoading(true)
             setIsOpen(false)
+            setCardTitle('')
         } else {
             setIsLoading(false)
         }

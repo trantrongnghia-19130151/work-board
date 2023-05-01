@@ -19,7 +19,6 @@ const cx = classNames.bind(styles);
 
 function Card(props) {
     const {card} = props
-    // console.log(card)
     const [tooltipIndex, setTooltipIndex] = useState(-1);
     const [show, setShow] = useState(false);
     const [open, setOpen] = useState(false)
