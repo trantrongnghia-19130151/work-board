@@ -7,7 +7,7 @@
     margin-bottom: 0;
   }
 
-  span {
+  .box-edit {
     cursor: pointer;
     padding: 4px;
     border-radius: 999px;
@@ -30,4 +30,33 @@
 }
 .edit-dropdown{
   z-index: 1;
+}
+.box{
+  width: 250px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.function{
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+.item{
+  padding: 4px 8px;
+  color: var(--text-color);
+  font-size: 1.6rem;
+  cursor: pointer;
+  &:hover{
+    background-color: #ccc;
+    color: var(--text-color);
+  }
+}
+.input-add{
+  font-size: 1.6rem;
+}
+.title{
+  font-size: 2rem;
 }
