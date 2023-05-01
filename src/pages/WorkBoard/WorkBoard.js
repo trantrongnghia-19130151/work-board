@@ -46,7 +46,6 @@ function WorkBoard(props) {
     }, [isLoading]);
 
     const handleAddColumns = async () => {
-        const  user = JSON.parse(localStorage.getItem("user"))
         const body = {
             workspaceId: id,
             columnName: columnTitle
