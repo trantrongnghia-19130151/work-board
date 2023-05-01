@@ -4,6 +4,7 @@ import {Container, Draggable} from "react-smooth-dnd";
 import {Button, Col, Container as Wrapper, Row} from 'react-bootstrap'
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
+import {useParams} from "react-router-dom";
 
 
 import styles from './WorkBoard.module.scss'
@@ -17,6 +18,7 @@ import {createColumn, getAllMemberWorkspace, getWorkspaceById, moveCardToColumn}
 const cx = classNames.bind(styles);
 
 function WorkBoard(props) {
+    let {id} = useParams();
     const [isOpen, setIsOpen] = useState(false)
     const [columns, setColumns] = useState([])
     const [columnTitle, setColumnTitle] = useState('')
@@ -35,7 +37,7 @@ function WorkBoard(props) {
         setIsLoading(false)
 
         async function fetchData() {
-            const response = await getWorkspaceById(1);
+            const response = await getWorkspaceById(id);
             const data = response?.data;
             setColumns(data.columns)
         }
@@ -46,7 +48,7 @@ function WorkBoard(props) {
     const handleAddColumns = async () => {
         const  user = JSON.parse(localStorage.getItem("user"))
         const body = {
-            workspaceId: user.id,
+            workspaceId: id,
             columnName: columnTitle
         }
         const response = await createColumn(body)
