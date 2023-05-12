@@ -11,6 +11,7 @@
     cursor: pointer;
     padding: 4px;
     border-radius: 999px;
+
     &:hover {
       background-color: #ccc;
 
@@ -24,39 +25,59 @@
 .edit {
   font-size: 2rem;
 }
-.avatar{
+
+.avatar {
   width: 25px;
   height: 25px;
 }
-.edit-dropdown{
+
+.edit-dropdown {
   z-index: 1;
 }
-.box{
+
+.box {
   width: 250px;
   background-color: #fff;
   border-radius: 4px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
-.function{
+
+.function {
   display: flex;
   justify-content: flex-end;
   flex-direction: column;
   padding-top: 12px;
   padding-bottom: 12px;
 }
-.item{
+
+.modal {
+  display: flex;
+
+  .modal-left {
+    width: 70%;
+  }
+
+  .modal-right {
+    width: 30%;
+  }
+}
+
+.item {
   padding: 4px 8px;
   color: var(--text-color);
   font-size: 1.6rem;
   cursor: pointer;
-  &:hover{
+
+  &:hover {
     background-color: #ccc;
     color: var(--text-color);
   }
 }
-.input-add{
+
+.input-add {
   font-size: 1.6rem;
 }
-.title{
+
+.title {
   font-size: 2rem;
 }

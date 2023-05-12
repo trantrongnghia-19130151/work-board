@@ -18,7 +18,7 @@ function Content(props) {
     const [workspaces, setWorkspaces] = useState([])
     useEffect(() => {
         const  user = JSON.parse(localStorage.getItem("user"))
-        getAllWorkspacesByUserId(user.id).then((res) => setWorkspaces(res.data))
+        getAllWorkspacesByUserId(user?.id).then((res) => setWorkspaces(res.data))
 
     }, [])
     return (

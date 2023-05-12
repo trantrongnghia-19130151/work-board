@@ -61,9 +61,22 @@ function Card(props) {
                        render={attrs => (
                            <div className={cx('box')} tabIndex="-1" {...attrs}>
                                <div className={cx('function')}>
-                                   <span className={cx('item')}>Sửa card title</span>
-                                   <span className={cx('item')}>Xóa title</span>
-                                   <span onClick={handleShow} className={cx('item')}>Thêm thành viên</span>
+                                   <div>
+                                       title
+                                   </div>
+                                   <div className={cx('modal')}>
+                                       <div className={cx('modal-left')}>
+                                           <div>
+                                               mo ta
+                                           </div>
+                                           <div>
+                                               nut them
+                                           </div>
+                                       </div>
+                                       <div className={cx('modal-right')}>
+                                           them thanh vien
+                                       </div>
+                                   </div>
                                </div>
                            </div>
                        )}
@@ -113,7 +126,7 @@ function Card(props) {
                     <Button variant="primary"
                             size='lg'
                             onClick={handleAddMember}>
-                       Thêm thành viên
+                        Thêm thành viên
                     </Button>
                 </Modal.Footer>
             </Modal>
