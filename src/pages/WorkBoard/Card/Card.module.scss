@@ -62,6 +62,30 @@
   }
 }
 
+.add-to-card{
+
+  &:hover{
+    cursor: pointer;
+  }
+}
+
+.add-to-card-title{
+  font-weight: bold;
+}
+
+.add-user{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e4e6ea;
+  border-radius: 5px;
+
+  .add-user-icon{
+    font-size: 200%;
+    margin-right: 10px;
+  }
+}
+
 .item {
   padding: 4px 8px;
   color: var(--text-color);
