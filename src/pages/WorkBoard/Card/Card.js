@@ -70,7 +70,9 @@ function Card(props) {
                                                mo ta
                                            </div>
                                            <div>
-                                               nut them
+                                           <Button variant="primary" size="lg">
+                                            Cập Nhật
+                                            </Button>{' '}
                                            </div>
                                        </div>
                                        <div className={cx('modal-right')}>
