@@ -8,7 +8,7 @@ import Tooltip from 'react-bootstrap/Tooltip';
 import Tippy from '@tippyjs/react/headless';
 
 import avatar from '~/assets/avatar/avatar.jpg'
-import {AiFillEdit} from 'react-icons/ai'
+import {AiFillEdit, AiOutlineUserAdd} from 'react-icons/ai'
 
 
 import styles from "./Card.module.scss";
@@ -74,7 +74,13 @@ function Card(props) {
                                            </div>
                                        </div>
                                        <div className={cx('modal-right')}>
-                                           them thanh vien
+                                           <div className={cx('add-to-card')}>
+                                               <span className={cx('add-to-card-title')}>Thêm vào thẻ</span>
+                                               <div onClick={handleShow} className={cx('add-user')}>
+                                                   <AiOutlineUserAdd className={cx('add-user-icon')}/>
+                                                   <span>Thành viên</span>
+                                               </div>
+                                           </div>
                                        </div>
                                    </div>
                                </div>
@@ -85,8 +91,6 @@ function Card(props) {
                         <AiFillEdit className={cx('edit')}/>
                     </span>
                 </Tippy>
-                </span>
-
             </div>
             <div className={cx('user')}>
                 {card?.cardMembers.map((member, index) => (
