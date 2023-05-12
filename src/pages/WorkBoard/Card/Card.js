@@ -50,25 +50,37 @@ function Card(props) {
         <div className="card" {...card.props}>
             <div className={cx('card-content')}>
                 <p>{card.name}</p>
-                <span>
-                    <Tippy
-                        interactive
-                        onClickOutside={() => setOpen(false)}
-                        placement="bottom-end"
-                        visible={open}
-                        popperOptions={{
-                            strategy: "fixed",
-                        }}
-                        render={attrs => (
-                            <div className={cx('box')} tabIndex="-1" {...attrs}>
-                                <div className={cx('function')}>
-                                    <span className={cx('item')}>Sửa card title</span>
-                                    <span className={cx('item')}>Xóa title</span>
-                                    <span onClick={handleShow} className={cx('item')}>Thêm thành viên</span>
-                                </div>
-                            </div>
-                        )}
-                    >
+                <Tippy trigger="click"
+                       interactive
+                       onClickOutside={() => setOpen(false)}
+                       placement="bottom-end"
+                       visible={open}
+                       popperOptions={{
+                           strategy: "fixed",
+                       }}
+                       render={attrs => (
+                           <div className={cx('box')} tabIndex="-1" {...attrs}>
+                               <div className={cx('function')}>
+                                   <div>
+                                       title
+                                   </div>
+                                   <div className={cx('modal')}>
+                                       <div className={cx('modal-left')}>
+                                           <div>
+                                               mo ta
+                                           </div>
+                                           <div>
+                                               nut them
+                                           </div>
+                                       </div>
+                                       <div className={cx('modal-right')}>
+                                           them thanh vien
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       )}
+                >
                     <span onClick={handleChangeOpen} className={cx('box-edit')}>
                         <AiFillEdit className={cx('edit')}/>
                     </span>
@@ -115,7 +127,7 @@ function Card(props) {
                     <Button variant="primary"
                             size='lg'
                             onClick={handleAddMember}>
-                       Thêm thành viên
+                        Thêm thành viên
                     </Button>
                 </Modal.Footer>
             </Modal>
