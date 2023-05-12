@@ -50,28 +50,30 @@ function Card(props) {
         <div className="card" {...card.props}>
             <div className={cx('card-content')}>
                 <p>{card.name}</p>
-                <Tippy trigger="click"
-                       interactive
-                       onClickOutside={() => setOpen(false)}
-                       placement="bottom-end"
-                       visible={open}
-                       popperOptions={{
-                           strategy: "fixed",
-                       }}
-                       render={attrs => (
-                           <div className={cx('box')} tabIndex="-1" {...attrs}>
-                               <div className={cx('function')}>
-                                   <span className={cx('item')}>Sửa card title</span>
-                                   <span className={cx('item')}>Xóa title</span>
-                                   <span onClick={handleShow} className={cx('item')}>Thêm thành viên</span>
-                               </div>
-                           </div>
-                       )}
-                >
+                <span>
+                    <Tippy
+                        interactive
+                        onClickOutside={() => setOpen(false)}
+                        placement="bottom-end"
+                        visible={open}
+                        popperOptions={{
+                            strategy: "fixed",
+                        }}
+                        render={attrs => (
+                            <div className={cx('box')} tabIndex="-1" {...attrs}>
+                                <div className={cx('function')}>
+                                    <span className={cx('item')}>Sửa card title</span>
+                                    <span className={cx('item')}>Xóa title</span>
+                                    <span onClick={handleShow} className={cx('item')}>Thêm thành viên</span>
+                                </div>
+                            </div>
+                        )}
+                    >
                     <span onClick={handleChangeOpen} className={cx('box-edit')}>
                         <AiFillEdit className={cx('edit')}/>
                     </span>
                 </Tippy>
+                </span>
 
             </div>
             <div className={cx('user')}>
