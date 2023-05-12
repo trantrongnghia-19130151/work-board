@@ -36,10 +36,13 @@
 }
 
 .box {
-  width: 250px;
+  position: fixed;
+  width: 800px;
+  height: 500px;
   background-color: #fff;
   border-radius: 4px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transform: translateX(-36%) translateY(-30%);
 }
 
 .function {
@@ -55,6 +58,35 @@
 
   .modal-left {
     width: 70%;
+    padding-left: 30px;
+    padding-right: 30px;
+
+    .input{
+      margin-top: 5px;
+      width: 100%;
+      background-color: #e4e6ea;
+      border-radius: 5px;
+
+      input{
+        border: none;
+        outline: none;
+        background-color: transparent;
+        text-indent: 15px;
+        line-height: 300%;
+        width: 95%;
+      }
+    }
+
+    .modal-save{
+      text-align: center;
+      margin-top: 20px;
+
+      button{
+        &:hover{
+          cursor: pointer;
+        }
+      }
+    }
   }
 
   .modal-right {
@@ -62,27 +94,26 @@
   }
 }
 
-.add-to-card{
-
-  &:hover{
-    cursor: pointer;
-  }
-}
-
-.add-to-card-title{
+.add-to-card-title {
   font-weight: bold;
 }
 
-.add-user{
+.add-user {
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
   background-color: #e4e6ea;
   border-radius: 5px;
+  width: 90%;
 
-  .add-user-icon{
-    font-size: 200%;
+  &:hover {
+    cursor: pointer;
+  }
+
+  .add-user-icon {
+    font-size: 140%;
     margin-right: 10px;
+    margin-left: 10px;
   }
 }
 

@@ -66,19 +66,17 @@ function Card(props) {
                                    </div>
                                    <div className={cx('modal')}>
                                        <div className={cx('modal-left')}>
-                                           <div>
-                                               <div>Mô tả</div>
-                                               <textarea
-                                                   value="Thêm mô tả chi tiết..."
-                                                   rows={1}
-                                                   cols={20}
-                                               />
+                                           <div className={cx('description')}>
+                                               <div style={{fontWeight: 'bold'}}>Mô tả</div>
+                                               <div className={cx('input')}>
+                                                   <input placeholder={'Thêm mô tả chi tiết'}/>
+                                               </div>
 
                                            </div>
-                                           <div>
-                                           <Button variant="primary" size="lg">
-                                            Cập Nhật
-                                            </Button>{' '}
+                                           <div className={cx('modal-save')}>
+                                               <Button variant="primary" size="lg">
+                                                   Cập Nhật
+                                               </Button>{' '}
                                            </div>
                                        </div>
                                        <div className={cx('modal-right')}>
