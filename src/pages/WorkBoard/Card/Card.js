@@ -85,8 +85,7 @@ function Card(props) {
                         <AiFillEdit className={cx('edit')}/>
                     </span>
                 </Tippy>
-                </span>
-
+                
             </div>
             <div className={cx('user')}>
                 {card?.cardMembers.map((member, index) => (
