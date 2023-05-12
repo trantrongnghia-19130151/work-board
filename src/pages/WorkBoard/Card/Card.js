@@ -13,15 +13,23 @@ import {AiFillEdit, AiOutlineUserAdd} from 'react-icons/ai'
 
 import styles from "./Card.module.scss";
 import Form from "react-bootstrap/Form";
+import {addMemberToCard} from "~/services/workspaces.sevices";
+import {toast} from "react-toastify";
 
 
 const cx = classNames.bind(styles);
 
 function Card(props) {
-    const {card} = props
+    const {card, loading} = props
     const [tooltipIndex, setTooltipIndex] = useState(-1);
     const [show, setShow] = useState(false);
     const [open, setOpen] = useState(false)
+    const [email, setEmail] = useState('')
+    const [cardId, setCardId] = useState(null)
+    const handleChangeEmail = (e) => {
+        setEmail(e.target.value)
+    }
+
     const handleClose = () => setShow(false);
     const handleShow = () => {
         setShow(true);
@@ -34,11 +42,36 @@ function Card(props) {
     const handleMemberTooltip = (index) => {
         setTooltipIndex(index);
     };
-    const handleAddMember = () => {
+    const handleAddMember = async () => {
+        const response = await addMemberToCard(card?.id, email)
+        if (response.status === 200) {
+            toast.success('Thêm thành viên  thành công!', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+            });
+            loading(true)
+            setShow(false)
+        } else {
+            toast.warning('Thêm thành viên không thành công!', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+            });
+            loading(false)
+        }
+
 
     }
 
     const renderMemberTooltip = (member) => {
+        // setCardId(member.id)
         return (
             <Tooltip id={`tooltip-${member.id}`}>
                 <div>{`${member.firstName} ${member.lastName}`}</div>
@@ -46,21 +79,22 @@ function Card(props) {
         );
     };
 
+
     return (
         <div className="card" {...card.props}>
             <div className={cx('card-content')}>
                 <p>{card.name}</p>
-                <Tippy trigger="click"
-                       interactive
-                       onClickOutside={() => setOpen(false)}
-                       placement="bottom-end"
-                       visible={open}
-                       popperOptions={{
-                           strategy: "fixed",
-                       }}
-                       render={attrs => (
-                           <div className={cx('box')} tabIndex="-1" {...attrs}>
-                               <div className={cx('function')}>
+                <Tippy
+                    interactive
+                    onClickOutside={() => setOpen(false)}
+                    placement="bottom-end"
+                    visible={open}
+                    popperOptions={{
+                        strategy: "fixed",
+                    }}
+                    render={attrs => (
+                        <div className={cx('box')} tabIndex="-1" {...attrs}>
+                            <div className={cx('function')}>
                                    <div>
                                        title
                                    </div>
@@ -76,9 +110,9 @@ function Card(props) {
 
                                            </div>
                                            <div>
-                                           <Button variant="primary" size="lg">
-                                            Cập Nhật
-                                            </Button>{' '}
+                                               <Button variant="primary" size="lg">
+                                                   Cập Nhật
+                                               </Button>
                                            </div>
                                        </div>
                                        <div className={cx('modal-right')}>
@@ -126,6 +160,8 @@ function Card(props) {
                 <Modal.Body>
                     <Form.Control
                         size='lg'
+                        value={email}
+                        onChange={handleChangeEmail}
                         className={cx('input-add')}
                         placeholder="Nhập tiêu đề"
                     />
@@ -138,7 +174,7 @@ function Card(props) {
                     </Button>
                     <Button variant="primary"
                             size='lg'
-                            onClick={handleAddMember}>
+                            onClick={() => handleAddMember()}>
                         Thêm thành viên
                     </Button>
                 </Modal.Footer>

@@ -28,5 +28,9 @@ export const getAllWorkspacesByUserId = async (userId) => {
     return await instance.get(`/workspace/user?userId=${userId}`);
 
 };
+export const addMemberToCard = async (cardId, email) => {
+    return await instance.get(`/cards/${cardId}/member/${email}`);
+
+};
 
 
