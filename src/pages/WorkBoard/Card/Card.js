@@ -83,7 +83,7 @@ function Card(props) {
     return (
         <div className="card" {...card.props}>
             <div className={cx('card-content')}>
-                <p>{card.name}</p>
+                <p>{card.name + "///" + card.id}</p>
                 <Tippy
                     interactive
                     onClickOutside={() => setOpen(false)}

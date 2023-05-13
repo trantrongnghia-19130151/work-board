@@ -74,13 +74,18 @@ function WorkBoard(props) {
         setColumns(newColumns);
     }
 
+
     const onCardDrop = async (columnId, dropResult) => {
         const {removedIndex, addedIndex, payload} = dropResult;
+        console.log("cardId", card.cardId)
+        console.log("columnId", newColumnId)
         if (card !== null) {
-            const response = await moveCardToColumn(card.cardId, newColumnId)
+            const response = await moveCardToColumn(card?.cardId, newColumnId)
             if (response.status === 200) {
                 setIsLoading(true)
                 setIsOpen(false)
+                setCard(null)
+                setNewColumnId(null)
             } else {
                 setIsLoading(false)
             }
@@ -88,7 +93,6 @@ function WorkBoard(props) {
         }
 
     }
-
 
 
     return (
