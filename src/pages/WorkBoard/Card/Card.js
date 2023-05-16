@@ -43,7 +43,19 @@ function Card(props) {
         setTooltipIndex(index);
     };
     const handleAddMember = async () => {
-        const response = await addMemberToCard(card?.id, email)
+        const response = await addMemberToCard(card?.id, email).catch((error) => {
+            if (error.response.status === 404) {
+                toast.warning('Không có thành viên này!', {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                });
+                loading(false)
+            }
+        })
         if (response.status === 200) {
             toast.success('Thêm thành viên  thành công!', {
                 position: "top-right",
@@ -55,16 +67,6 @@ function Card(props) {
             });
             loading(true)
             setShow(false)
-        } else {
-            toast.warning('Thêm thành viên không thành công!', {
-                position: "top-right",
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-            });
-            loading(false)
         }
 
 
