@@ -38,7 +38,6 @@ function Card(props) {
                 const response = await searchUserByEmail(email)
                 if (response?.data)
                     setUsers(response.data)
-                console.log(response.data)
             }, 300)
         }
         if (email === "") {

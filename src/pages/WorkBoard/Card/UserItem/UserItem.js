@@ -3,16 +3,22 @@ import React from "react";
 import classNames from "classnames/bind";
 
 import styles from "~/pages/WorkBoard/Card/UserItem/UserItem.module.scss"
+import {Avatar} from "~/assets/avatar";
 
 const cx = classNames.bind(styles);
 
 function UserItem({data, handleAddMember}) {
-    console.log(handleAddMember)
     return (
         <div>
             <div className={cx('container-item')}>
                 <div className={cx('email-item')}>
-                    {data.email}
+                    <div className={cx('avatar')}>
+                        <img src={Avatar}/>
+                    </div>
+                    <div className={cx('info')}>
+                        <div>{data.firstName} {data.lastName}</div>
+                        {data.email}
+                    </div>
                 </div>
                 <div className={cx('add-item')}>
                     <Button onClick={() => {
