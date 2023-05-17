@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import classNames from "classnames/bind";
 import {Dropdown, Image} from "react-bootstrap";
 import Modal from 'react-bootstrap/Modal';
@@ -13,8 +13,10 @@ import {AiFillEdit, AiOutlineUserAdd} from 'react-icons/ai'
 
 import styles from "./Card.module.scss";
 import Form from "react-bootstrap/Form";
-import {addMemberToCard} from "~/services/workspaces.sevices";
+import {addMemberToCard, searchUserByEmail} from "~/services/workspaces.sevices";
 import {toast} from "react-toastify";
+import {data} from "autoprefixer";
+import UserItem from "~/pages/WorkBoard/Card/UserItem";
 
 
 const cx = classNames.bind(styles);
@@ -26,6 +28,33 @@ function Card(props) {
     const [open, setOpen] = useState(false)
     const [email, setEmail] = useState('')
     const [cardId, setCardId] = useState(null)
+    const [users, setUsers] = useState([])
+    const [haveData, setHaveData] = useState(false)
+
+    useEffect(() => {
+        let timeout
+        const fetchData = async () => {
+            timeout = setTimeout(async () => {
+                const response = await searchUserByEmail(email)
+                if (response?.data)
+                    setUsers(response.data)
+                console.log(response.data)
+            }, 300)
+        }
+        if (email === "") {
+            setUsers([])
+            return
+        }
+        fetchData()
+    }, [email])
+
+    useEffect(() => {
+        if (users !== []) {
+            setHaveData(true)
+            return
+        }
+        setHaveData(false)
+    }, [users])
     const handleChangeEmail = (e) => {
         setEmail(e.target.value)
     }
@@ -42,7 +71,7 @@ function Card(props) {
     const handleMemberTooltip = (index) => {
         setTooltipIndex(index);
     };
-    const handleAddMember = async () => {
+    const handleAddMember = async (email) => {
         const response = await addMemberToCard(card?.id, email).catch((error) => {
             if (error.response.status === 404) {
                 toast.warning('Không có thành viên này!', {
@@ -97,37 +126,37 @@ function Card(props) {
                     render={attrs => (
                         <div className={cx('box')} tabIndex="-1" {...attrs}>
                             <div className={cx('function')}>
-                                   <div>
-                                       title
-                                   </div>
-                                   <div className={cx('modal')}>
-                                       <div className={cx('modal-left')}>
-                                           <div className={cx('description')}>
-                                               <div style={{fontWeight: 'bold'}}>Mô tả</div>
-                                               <div className={cx('input')}>
-                                                   <input placeholder={'Thêm mô tả chi tiết'}/>
-                                               </div>
+                                <div>
+                                    title
+                                </div>
+                                <div className={cx('modal')}>
+                                    <div className={cx('modal-left')}>
+                                        <div className={cx('description')}>
+                                            <div style={{fontWeight: 'bold'}}>Mô tả</div>
+                                            <div className={cx('input')}>
+                                                <input placeholder={'Thêm mô tả chi tiết'}/>
+                                            </div>
 
-                                           </div>
-                                           <div className={cx('modal-save')}>
-                                               <Button variant="primary" size="lg">
-                                                   Cập Nhật
-                                               </Button>{' '}
-                                           </div>
-                                       </div>
-                                       <div className={cx('modal-right')}>
-                                           <div className={cx('add-to-card')}>
-                                               <span className={cx('add-to-card-title')}>Thêm vào thẻ</span>
-                                               <div onClick={handleShow} className={cx('add-user')}>
-                                                   <AiOutlineUserAdd className={cx('add-user-icon')}/>
-                                                   <span>Thành viên</span>
-                                               </div>
-                                           </div>
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
-                       )}
+                                        </div>
+                                        <div className={cx('modal-save')}>
+                                            <Button variant="primary" size="lg">
+                                                Cập Nhật
+                                            </Button>{' '}
+                                        </div>
+                                    </div>
+                                    <div className={cx('modal-right')}>
+                                        <div className={cx('add-to-card')}>
+                                            <span className={cx('add-to-card-title')}>Thêm vào thẻ</span>
+                                            <div onClick={handleShow} className={cx('add-user')}>
+                                                <AiOutlineUserAdd className={cx('add-user-icon')}/>
+                                                <span>Thành viên</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )}
                 >
                     <span onClick={handleChangeOpen} className={cx('box-edit')}>
                         <AiFillEdit className={cx('edit')}/>
@@ -163,19 +192,23 @@ function Card(props) {
                         value={email}
                         onChange={handleChangeEmail}
                         className={cx('input-add')}
-                        placeholder="Nhập tiêu đề"
+                        placeholder="Nhập email user"
                     />
+                    {
+                        haveData
+                        &&
+                        <div>
+                            {users.map((result) => (
+                                <UserItem key={result.id} data={result} handleAddMember={handleAddMember}/>
+                            ))}
+                        </div>
+                    }
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary"
                             size='lg'
                             onClick={handleClose}>
                         Hủy
-                    </Button>
-                    <Button variant="primary"
-                            size='lg'
-                            onClick={() => handleAddMember()}>
-                        Thêm thành viên
                     </Button>
                 </Modal.Footer>
             </Modal>
