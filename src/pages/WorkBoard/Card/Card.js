@@ -113,7 +113,7 @@ function Card(props) {
     return (
         <div className="card" {...card.props}>
             <div className={cx('card-content')}>
-                <p>{card.name + "///" + card.id}</p>
+                <p>{card.name}</p>
                 <Tippy
                     interactive
                     onClickOutside={() => setOpen(false)}
@@ -165,7 +165,7 @@ function Card(props) {
             <div className={cx('user')}>
                 {card?.cardMembers.map((member, index) => (
                     <OverlayTrigger
-                        key={member.id}
+                        key={index}
                         overlay={renderMemberTooltip(member)}
                         placement="bottom"
                     >
@@ -197,8 +197,8 @@ function Card(props) {
                         haveData
                         &&
                         <div>
-                            {users.map((result) => (
-                                <UserItem key={result.id} data={result} handleAddMember={handleAddMember}/>
+                            {users.map((result, index) => (
+                                <UserItem key={index} data={result} handleAddMember={handleAddMember}/>
                             ))}
                         </div>
                     }
