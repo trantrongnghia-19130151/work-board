@@ -105,7 +105,7 @@ function Column(props) {
             <Container
                 {...data.props}
                 groupName="col"
-                onDragStart={e => console.log("drag started", e)}
+                onDragStart={e => setCard(e.payload, e)}
                 onDragEnd={e => setCard(e.payload)}
                 onDrop={e => onCardDrop(data.id, e)}
                 getChildPayload={index => getCardPayload(data.id, index)}

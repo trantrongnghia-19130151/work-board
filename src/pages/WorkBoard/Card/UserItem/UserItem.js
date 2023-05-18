@@ -3,7 +3,7 @@ import React from "react";
 import classNames from "classnames/bind";
 
 import styles from "~/pages/WorkBoard/Card/UserItem/UserItem.module.scss"
-import {Avatar} from "~/assets/avatar";
+import Avatar from "~/assets/avatar/avatar.jpg";
 
 const cx = classNames.bind(styles);
 
