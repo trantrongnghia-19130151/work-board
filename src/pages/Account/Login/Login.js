@@ -26,6 +26,7 @@ function Login() {
         try {
             const response = await AuthServices.login(email, password)
             navigate("/")
+            console.log(response)
         } catch (error) {
             console.log(error)
         }
