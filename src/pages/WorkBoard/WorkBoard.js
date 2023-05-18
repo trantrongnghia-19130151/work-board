@@ -76,6 +76,8 @@ function WorkBoard(props) {
 
 
     const onCardDrop = async (columnId, dropResult) => {
+        console.log("card", card.cardId)
+        console.log("newColumnId", newColumnId)
         if (card !== null) {
             const response = await moveCardToColumn(card.cardId, newColumnId)
             if (response.status === 200) {
@@ -106,8 +108,8 @@ function WorkBoard(props) {
                         className: 'cards-drop-preview'
                     }}
                 >
-                    {columns?.map(column => (
-                        <Draggable key={column.id}>
+                    {columns?.map((column, index) => (
+                        <Draggable key={index}>
                             <Column setNewColumnId={setNewColumnId}
                                     setCurrentColumnId={setCurrentColumnId}
                                     setIsLoading={setIsLoading}

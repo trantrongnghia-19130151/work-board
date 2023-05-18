@@ -127,8 +127,8 @@ function Column(props) {
                 }}
                 dropPlaceholderAnimationDuration={200}
             >
-                {data.cards.map(card => (
-                    <Draggable key={card.id}>
+                {data.cards?.map((card, index) => (
+                    <Draggable key={index}>
                         <Card loading={setIsLoading} card={card}/>
                     </Draggable>
                 ))}
